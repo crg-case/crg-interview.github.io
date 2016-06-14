@@ -1,11 +1,13 @@
+<!DOCTYPE html>
+
 <html>
 
 <head>
 <title>Coleman Research Survey</title>
-<script>
+<script type="text/javascript">
   function disableSurvey() {
-  var divblank = document.getElementById("blank");
-  divblank.style.display = "inherit";
+    var divblank = document.getElementById("blank");
+    divblank.style.display = "inherit";
   }
   setTimeout(disableSurvey,1500000)
 </script>
@@ -34,6 +36,31 @@
 <br>
 <br>An interviewer will be back in the room momentarily to discuss your work and expert recommendations.</p>
 </div>
+
+<div id="timerwrapper" style="position:absolute; top:40px; left:40px; background:white; z-index:9999; font-family:arial;">Time remaining: <br><span id="timer" style="position:absolute; right:5px; font-size:20px; font-weight:bold;">25:00</span>
+</div>
+<script>
+  function countdown(minutes) {
+    var seconds = 60;
+    var mins = minutes
+    function tick() {
+      var counter = document.getElementById("timer");
+      var current_minutes = mins-1
+      seconds--;
+      counter.innerHTML =
+      current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
+      if( seconds > 0 ) {
+        setTimeout(tick, 1000);
+      } else {
+        if(mins > 1){
+          setTimeout(function () { countdown(mins - 1); }, 1000);
+        }
+      }
+    }
+    tick();
+  }
+  countdown(25);
+</script>
 
 <iframe src="http://www.proprofs.com/survey/t/?title=coleman-interview-test-draft&page=1" height="100%" width="100%" style="position: absolute; left: 0px; border: none;"></iframe>
 
